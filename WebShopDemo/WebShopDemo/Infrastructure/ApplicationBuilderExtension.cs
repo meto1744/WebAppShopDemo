@@ -24,7 +24,7 @@ namespace WebShopDemo.Infrastructure
             SeedCategories(dataCategory);
 
             var dataBrand = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-            SeedCategories(dataBrand);
+            SeedBrands(dataBrand);
             return app;
         }
 
@@ -86,21 +86,21 @@ namespace WebShopDemo.Infrastructure
 
         public static void SeedBrands(ApplicationDbContext dataBrand)
         {
-            if (dataBrand.Categories.Any())
+            if (dataBrand.Brands.Any())
             {
                 return;
             }
 
-            dataBrand.Categories.AddRange(new[]
+            dataBrand.Brands.AddRange(new[]
             {
-                new Category{CategoryName="Acer"},
-                new Category{CategoryName="Asus"},
-                new Category{CategoryName="Apple"},
-                new Category{CategoryName="Dell"},
-                new Category{CategoryName="HP"},
-                new Category{CategoryName="Huawei"},
-                new Category{CategoryName="Lenovo"},
-                new Category{CategoryName="Samsung"},
+                new Brand{BrandName="Acer"},
+                new Brand{BrandName="Asus"},
+                new Brand{BrandName="Apple"},
+                new Brand{BrandName="Dell"},
+                new Brand{BrandName="HP"},
+                new Brand{BrandName="Huawei"},
+                new Brand{BrandName="Lenovo"},
+                new Brand{BrandName="Samsung"},
             });
             dataBrand.SaveChanges();
         }

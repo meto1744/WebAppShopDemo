@@ -44,6 +44,19 @@ namespace WebShopDemo.Controllers
                     Price = product.Price,
                     Discount = product.Discount,
                 }).ToList();
+            if (!String.IsNullOrEmpty(searchStringCategoryName) && !String.IsNullOrEmpty(searchStringBrandName))
+            {
+                products = products.Where(d => d.CategoryName.Contains(searchStringCategoryName) && d.BrandName.Contains(searchStringBrandName)).ToList();
+
+            }
+            else if (!String.IsNullOrEmpty(searchStringCategoryName))
+            {
+                products = products.Where(d => d.CategoryName.Contains(searchStringCategoryName)).ToList();
+            }
+            else if (!String.IsNullOrEmpty(searchStringBrandName))
+            {
+                products = products.Where(d => d.BrandName.Contains(searchStringBrandName)).ToList();
+            }
             return this.View(products);
         }
         public ActionResult Create()
@@ -177,7 +190,7 @@ namespace WebShopDemo.Controllers
                 Price = product.Price,
                 Discount = product.Discount
             };
-            return View(product);
+            return View(productDelete);
         }
 
         [HttpPost]
@@ -187,9 +200,13 @@ namespace WebShopDemo.Controllers
             var deleted = _productService.RemoveById(id);
             if (deleted)
             {
-                return this.RedirectToAction("Index");
+                return this.RedirectToAction("Success");
             }
             else { return View(); }
+        }
+        public IActionResult Success()
+        {
+            return View();
         }
     }
 }
