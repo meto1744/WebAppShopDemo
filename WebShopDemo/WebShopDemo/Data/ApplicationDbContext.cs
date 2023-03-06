@@ -6,6 +6,7 @@ using System.Text;
 using WebShopDemo.Domain;
 using WebShopDemo.Models.Product;
 using WebShopDemo.Models.Orders;
+using WebShopDemo.Models.Client;
 
 namespace WebShopDemo.Data
 {
@@ -26,5 +27,7 @@ namespace WebShopDemo.Data
         public DbSet<WebShopDemo.Models.Product.ProductDetailsVM> ProductDetailsVM { get; set; }
         public DbSet<WebShopDemo.Models.Product.ProductDeleteVM> ProductDeleteVM { get; set; }
         public DbSet<WebShopDemo.Models.Orders.OrderIndexVM> OrderIndexVM { get; set; }
+        public DbSet<WebShopDemo.Models.Client.ClientIndexVM> ClientIndexVM { get; set; }
+        public DbSet<WebShopDemo.Models.Client.ClientDeleteVM> ClientDeleteVM { get; set; }
     }
 }
