@@ -74,21 +74,22 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
-            @if (this.User.Identity.IsAuthenticated)
-                {
-                    <tb>
-                        @await Html.PartialAsync("_OrderPartialView", new OrderConfirmVM
-                        {
-                            ProductId = item.Id
-                        })
-                    </tb>
-                }
+            
                 <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Discount) %
             </td>
+            @if (this.User.Identity.IsAuthenticated)
+                {
+                    <td>
+                        @await Html.PartialAsync("_OrderPartialView", new OrderConfirmVM
+                        {
+                            ProductId = item.Id
+                        })
+                    </td>
+                }
             <td>
                 @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
                 {<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> }|
