@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using WebShopDemo.Abstraction;
@@ -26,7 +27,7 @@ namespace WebShopDemo.Services
                 Picture = picture,
                 Quantity = quantity,
                 Price = price,
-                Discount = discount
+                Discount = discount 
             };
 
             _context.Products.Add(item);
@@ -97,7 +98,5 @@ namespace WebShopDemo.Services
             _context.Update(product);
             return _context.SaveChanges() != 0;
         }
-
-       
     }
 }

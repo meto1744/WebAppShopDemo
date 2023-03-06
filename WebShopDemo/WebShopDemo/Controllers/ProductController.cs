@@ -30,7 +30,7 @@ namespace WebShopDemo.Controllers
         [AllowAnonymous]
         public ActionResult Index(string searchStringCategoryName, string searchStringBrandName)
         {
-            List<ProductIndexVM> products = _productService.GetProducts(searchStringCategoryName, searchStringBrandName)
+            List<ProductIndexVM> products = _productService.GetProducts()
                 .Select(product => new ProductIndexVM
                 {
                     Id = product.Id,
